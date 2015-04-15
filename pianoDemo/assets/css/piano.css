@@ -1,0 +1,59 @@
+* {
+  font-family: arial;
+}
+
+body {
+  position: relative;
+}
+
+
+.white-key {
+  position: relative;
+  background-color: white;
+  border: 1px solid black;
+  height: 200px;
+  width: 40px;
+  border-top: none;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: -1px;
+}
+
+.black-key {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 25px;
+  height: 66%;
+  width: 30px;
+  background-color: black;
+}
+
+.key-name {
+  text-align: center;
+  font-size: 26px;
+  margin-top: 160px;
+}
+
+#keyboard {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-left: -140px;
+  height: 400px;
+  width: 280px;
+}
+
+.user-interface {
+  position: relative;
+}
+
+.key-input {
+  left: 50%;
+}
+
+.user-interface {
+  clear: left;
+}
