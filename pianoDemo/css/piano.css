@@ -23,18 +23,19 @@ body {
 
 .white-key:hover {
   z-index: 1;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 255, 0.67);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 255, 0.67);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 255, 0.67);
+  background-color: lightyellow;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
 }
 
 .black-key {
   z-index: 2;
   position: absolute;
   top: 0;
-  left: 25px;
+  left: 30px;
   height: 66%;
-  width: 30px;
+  width: 20px;
   background-color: black;
 }
 
@@ -63,4 +64,12 @@ body {
 
 .user-interface {
   clear: left;
+}
+
+.btn-input {
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  padding: 5px;
 }
