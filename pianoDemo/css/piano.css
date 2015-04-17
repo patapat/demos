@@ -21,7 +21,8 @@ body {
   margin-left: -1px;
 }
 
-.white-key:hover {
+.white-key:hover,
+.highlighted {
   z-index: 1;
   background-color: lightyellow;
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
