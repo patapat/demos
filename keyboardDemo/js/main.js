@@ -1,8 +1,6 @@
 require(
   [
     "libs/jquery-2.1.3.min",
-    "libs/underscore-min",
-    "libs/backbone-min",
     "libs/audiosynth",
     "app"
   ], function() {

@@ -14,6 +14,9 @@ define(["jquery"], function($) {
           $(this).prepend('<div class="blank"></div>');
         }
       });
+      var count = $target.children('span').text();
+      count++;
+      $target.children('span').text(count);
     }
 
     var highlightKeys = function (e, instrument) {
