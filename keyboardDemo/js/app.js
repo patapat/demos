@@ -1,5 +1,4 @@
 define(["jquery"], function($) {
-
   $(document).ready(function () {
     var instrument = Synth.createInstrument(0);
     var keydown = false;
@@ -9,17 +8,17 @@ define(["jquery"], function($) {
       $('.log').each(function () {
         if ($(this).data('log') === $target.data('log')) {
           $target.prepend('<div class="logged-key">' + dataKey + '</div>');
-          $('')
         } else {
           $(this).prepend('<div class="blank"></div>');
         }
       });
+
       var count = $target.children('span').text();
       count++;
       $target.children('span').text(count);
     }
 
-    var highlightKeys = function (e, instrument) {
+    var highlightKeys = function (e) {
       if (e.which == '13' || e.type === "click") {
         var input = $('.key-input').val();
         var formattedArr = filterKeys(input);
@@ -45,7 +44,7 @@ define(["jquery"], function($) {
       logKeys(dataKey);
     }
 
-    var keyInput = function (e, instrument) {
+    var keyInput = function (e) {
       var inputPair = {
         113: 'C',
         119: 'D',
@@ -81,7 +80,7 @@ define(["jquery"], function($) {
       $currentTarget.toggleClass('active-tab');
       var instrumentID = $currentTarget.data('id');
       instrument = Synth.createInstrument(instrumentID);
-    })
+    });
 
     $('.white-key').click(function (e) {
       var $currentTarget = $(e.currentTarget)
@@ -100,7 +99,7 @@ define(["jquery"], function($) {
       }
 
       keydown = true;
-      keyInput(e, instrument);
+      keyInput(e);
     });
 
     $('body').keyup(function (e) {
@@ -108,17 +107,15 @@ define(["jquery"], function($) {
         $('.active-key').toggleClass('active-key');
         keydown = false;
       }
-    })
+    });
 
     $('.key-input').on("keypress", function (e) {
       e.stopPropagation();
-      highlightKeys(e, instrument);
+      highlightKeys(e);
     });
 
     $('.btn-input').on("click", function (e) {
-      highlightKeys(e, instrument);
+      highlightKeys(e);
     });
   });
-
-
 });

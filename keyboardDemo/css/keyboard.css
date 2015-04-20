@@ -7,6 +7,14 @@ body {
   position: relative;
 }
 
+.keylog-label {
+  position: absolute;
+  top: 40%;
+  margin-left: -10px;
+  font-size: 30px;
+  opacity: .3;
+}
+
 #keyboard,
 #instruments {
   position: relative;
@@ -22,16 +30,18 @@ body {
 }
 
 #instruments > div {
+  /* Display & Box Model */
   width: 25%;
   float: left;
   padding: 5px 0px 5px 0px;
   border: 1px solid grey;
+  margin-left: -1px;
+  border-radius: 5px 5px 0 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-left: -1px;
-  border-radius: 5px 5px 0 0;
 
+  /* Transitions */
   -webkit-transition: all 1s ease;
 	-moz-transition: all 1s ease;
 	-ms-transition: all 1s ease;
@@ -39,14 +49,34 @@ body {
 	transition: all 1s ease;
 }
 
+#instruments > div:hover,
+.active-tab {
+  height: 40px;
+  margin-top: -10px;
+  color: white;
+  background-color: black;
+  line-height: 30px;
+  vertical-align: middle;
+
+  -webkit-transition: height .1s ease;
+	-moz-transition: height .1s ease;
+	-ms-transition: height .1s ease;
+	-o-transition: height .1s ease;
+	transition: height .1s ease;
+}
+
 button {
+  /* Display & Box Model */
+  width: 25%;
+  padding: 5px 10px 5px 10px;
   border: 1px solid black;
   border-radius: 5px;
+
+  /* Color */
   background-color: white;
   color: black;
-  padding: 5px 10px 5px 10px;
-  width: 25%;
 
+  /* Transitions */
   -webkit-transition: all 1s ease;
 	-moz-transition: all 1s ease;
 	-ms-transition: all 1s ease;
@@ -66,41 +96,24 @@ button:active {
 	transition: all 1s ease;
 }
 
-#instruments > div:hover,
-.active-tab {
-  color: white;
-  background-color: black;
-  margin-top: -10px;
-  height: 40px;
-  line-height: 30px;
-  vertical-align: middle;
-
-  -webkit-transition: height .1s ease;
-	-moz-transition: height .1s ease;
-	-ms-transition: height .1s ease;
-	-o-transition: height .1s ease;
-	transition: height .1s ease;
-}
-
 .white-key {
   position: relative;
   background-color: white;
+
+  /* Display & Box Model */
   border-radius: 5px;
   border: 1px solid black;
   height: 50%;
   width: 14.28%;
-  /*height: 300px;
-  width: 60px;*/
   border-top: none;
+  margin-left: -1px;
   float: left;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-left: -1px;
   -webkit-box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 5px 9px 15px rgba(0,0,0,.7);
   -moz-box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 5px 9px 15px rgba(0,0,0,.7);
   box-shadow: 0px 9px 2px rgba(0,0,0,.33), 5px 9px 15px rgba(0,0,0,.7);
-
 }
 
 .white-key:hover,
@@ -109,17 +122,19 @@ button:active {
 }
 
 .white-key:hover {
-  /*z-index: 1;*/
+  z-index: 1;
   background-color: lightyellow;
-  /*-webkit-box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 0px 3px 6px rgba(0,0,0,.9);
+  -webkit-box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 0px 3px 6px rgba(0,0,0,.9);
   -moz-box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 0px 3px 6px rgba(0,0,0,.9);
-  box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 0px 9px 15px rgba(0,0,0,.9);*/
+  box-shadow: 0px 9px 0px rgba(0,0,0,0.33), 0px 9px 15px rgba(0,0,0,.9);
 }
 
 .white-key:active,
 .active-key {
   position: relative;
   top: 6px;
+  background-color: lightyellow;
+
   -webkit-box-shadow: 0px 3px 0px rgba(0,0,0,0.33),
     inset 10px 0px 15px -10px rgba(0,0,0,.9),
     inset -10px 0px 15px -10px rgba(0,0,0,.9);
@@ -129,8 +144,6 @@ button:active {
   box-shadow: 0px 3px 0px rgba(0,0,0,0.33),
     inset 10px 0px 15px -10px rgba(0,0,0,.9),
     inset -10px 0px 15px -10px rgba(0,0,0,.9);
-  background-color: lightyellow;
-
   -webkit-transition: all .1s ease;
 	-moz-transition: all .1s ease;
 	-ms-transition: all .1s ease;
@@ -144,13 +157,13 @@ button:active {
 }
 
 .black-key {
-  z-index: 2;
   position: absolute;
-  border-radius: 4px;
   top: 0;
   left: 75%;
   height: 66%;
   width: 50%;
+  z-index: 2;
+  border-radius: 4px;
   background-color: black;
 }
 
@@ -162,7 +175,12 @@ button:active {
 .key-letter {
   margin: 210px 0 0px 0;
   color: grey;
-  /*line-height: 200px;*/
+}
+
+.user-interface {
+  position: relative;
+  clear: left;
+  top: 20px;
 }
 
 .key-input {
@@ -176,11 +194,13 @@ button:active {
 }
 
 .log {
-  overflow: hidden;
   position: relative;
+
+  /* Display & Box Model */
   height: 100%;
   width: 14.27%;
   float: left;
+  overflow: hidden;
   border-right: 1px solid grey;
   border-left: 1px solid grey;
   box-sizing: border-box;
@@ -196,15 +216,10 @@ button:active {
     -o-linear-gradient(grey, rgba(0, 0, 0, 0)) 1 100%;
   border-image:
     linear-gradient(to bottom, grey, rgba(0, 0, 0, 0)) 1 100%;
+
   span {
     margin-bottom: 10px;
   }
-}
-
-.user-interface {
-  position: relative;
-  clear: left;
-  top: 20px;
 }
 
 .logged-key,
@@ -214,7 +229,7 @@ button:active {
   color: white;
   text-align: middle;
   line-height: 60px;
-  background-color: black;q
+  background-color: black;
 }
 
 .logged-key,
@@ -230,8 +245,8 @@ button:active {
 }
 
 .key-counter {
-  bottom: 0;
-  margin-left: -30px;
   position: absolute;
+  bottom: 0;
   width: 59px;
+  margin-left: -30px;
 }
