@@ -4,21 +4,32 @@ define(["jquery"], function($) {
     var instrument = Synth.createInstrument(0);
     var keydown = false;
 
+    var logKeys = function (dataKey) {
+      var $target = $('[data-log="' + dataKey + '"]');
+      $('.log').each(function () {
+        if ($(this).data('log') === $target.data('log')) {
+          $target.prepend('<div class="logged-key">' + dataKey + '</div>');
+          $('')
+        } else {
+          $(this).prepend('<div class="blank"></div>');
+        }
+      });
+    }
+
     var highlightKeys = function (e, instrument) {
       if (e.which == '13' || e.type === "click") {
         var input = $('.key-input').val();
         var formattedArr = filterKeys(input);
         var i = 0;
-
-        var keyInterval = setInterval(function() {
+        (function keyTimeout () {
           if (i < formattedArr.length) {
             toggleKeys(formattedArr[i]);
             i++;
+            setTimeout(keyTimeout, 1000);
           } else {
             $('.active-key').toggleClass('active-key');
-            clearInterval(keyInterval);
           }
-        }, 1000);
+        })();
         $('.key-input').val('');
       }
     }
@@ -28,7 +39,7 @@ define(["jquery"], function($) {
       var $target = $('[data-key="' + dataKey + '"]');
       $target.toggleClass('active-key');
       instrument.play(dataKey, 4, 2);
-      $('.key-log').append(dataKey + " ");
+      logKeys(dataKey);
     }
 
     var keyInput = function (e, instrument) {
@@ -49,19 +60,17 @@ define(["jquery"], function($) {
     }
 
     function filterKeys (keys) {
-      var validKeys = "cdefgab";
+      var validKeys = "CDEFGAB";
       var filteredKeys = [];
       var splitKeys = keys.replace(/[, ]/g, '').split('');
       splitKeys.forEach(function (char) {
-        if (validKeys.indexOf(char) != -1) {
+        if (validKeys.indexOf(char.toUpperCase()) != -1) {
           filteredKeys.push(char.toUpperCase());
         }
       });
 
       return filteredKeys;
     }
-
-    $('#piano').toggleClass('active-tab');
 
     $('#instruments > div').click(function (e) {
       $('.active-tab').toggleClass('active-tab');
@@ -74,7 +83,7 @@ define(["jquery"], function($) {
     $('.white-key').click(function (e) {
       var $currentTarget = $(e.currentTarget)
       var key = $currentTarget.data('key');
-      $('.key-log').append(key + " ");
+      logKeys(key);
       instrument.play(key, 4, 2);
     });
 
@@ -91,9 +100,11 @@ define(["jquery"], function($) {
       keyInput(e, instrument);
     });
 
-    $('body').keyup(function () {
-      $('.active-key').toggleClass('active-key');
-      keydown = false;
+    $('body').keyup(function (e) {
+      if (e.which != '13') {
+        $('.active-key').toggleClass('active-key');
+        keydown = false;
+      }
     })
 
     $('.key-input').on("keypress", function (e) {

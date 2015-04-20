@@ -11,11 +11,3 @@ require(
     //util's dependencies have loaded, and the util argument will hold
     //the module value for "helper/util".
 });
-
-requirejs.config({
-    baseUrl: 'js',
-    paths: {
-        views: '/views',
-        templates: '../templates'
-    }
-});

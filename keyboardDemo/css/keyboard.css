@@ -1,5 +1,6 @@
 * {
   font-family: arial;
+  text-align: center;
 }
 
 body {
@@ -8,7 +9,7 @@ body {
 
 #keyboard,
 #instruments {
-  position: absolute;
+  position: relative;
   top: 50px;
   left: 50%;
   margin-left: -210px;
@@ -17,15 +18,12 @@ body {
 }
 
 #instruments {
-  display: table;
   position: absolute;
-  top: 10px;
 }
 
 #instruments > div {
   width: 25%;
   float: left;
-  text-align: center;
   padding: 5px 0px 5px 0px;
   border: 1px solid grey;
   -webkit-box-sizing: border-box;
@@ -41,11 +39,30 @@ body {
 }
 
 button {
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 5px 10px 5px 10px;
+  width: 25%;
+
+  -webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+button:hover,
+button:active {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  -webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
 }
 
 #instruments > div:hover,
@@ -67,6 +84,7 @@ button {
 .white-key {
   position: relative;
   background-color: white;
+  border-radius: 5px;
   border: 1px solid black;
   height: 50%;
   width: 14.28%;
@@ -127,6 +145,7 @@ button {
 .black-key {
   z-index: 2;
   position: absolute;
+  border-radius: 4px;
   top: 0;
   left: 75%;
   height: 66%;
@@ -136,26 +155,82 @@ button {
 
 .key-name {
   margin-top: 20px;
-  text-align: center;
   font-size: 26px;
 }
 
 .key-letter {
-  text-align: center;
   margin: 210px 0 0px 0;
-
+  color: grey;
   /*line-height: 200px;*/
+}
+
+.key-input {
+  text-align: left;
+  width: 70%;
+  font-size: 16px;
+}
+
+.key-log {
+  height: 435px;
+}
+
+.log {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 14.27%;
+  float: left;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+  box-sizing: border-box;
+  margin-left: -1px;
+  border-width: 1px;
+  -webkit-border-image:
+    -webkit-gradient(linear, 0 0, 0 100%, from(grey), to(rgba(0, 0, 0, 0))) 1 100%;
+  -webkit-border-image:
+    -webkit-linear-gradient(grey, rgba(0, 0, 0, 0)) 1 100%;
+  -moz-border-image:
+    -moz-linear-gradient(grey, rgba(0, 0, 0, 0)) 1 100%;
+  -o-border-image:
+    -o-linear-gradient(grey, rgba(0, 0, 0, 0)) 1 100%;
+  border-image:
+    linear-gradient(to bottom, grey, rgba(0, 0, 0, 0)) 1 100%;
+  span {
+    margin-bottom: 10px;
+  }
 }
 
 .user-interface {
   position: relative;
-}
-
-.key-input {
-  left: 50%;
-}
-
-.user-interface {
   clear: left;
-  top: 10px;
+  top: 20px;
+}
+
+.logged-key,
+.key-counter {
+  height: 60px;
+  border: 1px solid white;
+  color: white;
+  text-align: middle;
+  line-height: 60px;
+  background-color: black;
+}
+
+.logged-key,
+.blank {
+  position: relative;
+  display: block;
+}
+
+.blank {
+  height: 60px;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.key-counter {
+  bottom: 0;
+  margin-left: -30px;
+  position: absolute;
+  width: 60px;
 }
