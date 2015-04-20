@@ -9,22 +9,35 @@ body {
 #keyboard,
 #instruments {
   position: absolute;
-  top: 70px;
+  top: 50px;
   left: 50%;
-  margin-left: -140px;
-  height: 400px;
-  width: 280px;
+  margin-left: -210px;
+  height: 600px;
+  width: 420px;
 }
 
 #instruments {
+  display: table;
   position: absolute;
   top: 10px;
 }
 
-#instruments > button {
-  position: relative;
-  margin: 5%;
-  padding: 5px;
+#instruments > div {
+  width: 25%;
+  float: left;
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  border: 1px solid grey;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: -1px;
+
+  -webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
 }
 
 button {
@@ -35,24 +48,30 @@ button {
   padding: 5px 10px 5px 10px;
 }
 
-#organ {
-  background-color: rgb(184, 115, 51);
-}
+#instruments > div:hover,
+.active-tab {
+  color: white;
+  background-color: black;
+  margin-top: -10px;
+  height: 40px;
+  line-height: 30px;
+  vertical-align: middle;
 
-#guitar {
-  background-color: sienna;
-}
-
-#EDM {
-  background-color: magenta;
+  -webkit-transition: height .1s ease;
+	-moz-transition: height .1s ease;
+	-ms-transition: height .1s ease;
+	-o-transition: height .1s ease;
+	transition: height .1s ease;
 }
 
 .white-key {
   position: relative;
   background-color: white;
   border: 1px solid black;
-  height: 200px;
-  width: 40px;
+  height: 50%;
+  width: 14.28%;
+  /*height: 300px;
+  width: 60px;*/
   border-top: none;
   float: left;
   -webkit-box-sizing: border-box;
@@ -66,7 +85,7 @@ button {
 }
 
 .white-key:hover,
-button:hover {
+#instruments > div:hover {
   cursor: pointer;
 }
 
@@ -109,16 +128,23 @@ button:hover {
   z-index: 2;
   position: absolute;
   top: 0;
-  left: 30px;
-  height: 131px;
-  width: 20px;
+  left: 75%;
+  height: 66%;
+  width: 50%;
   background-color: black;
 }
 
 .key-name {
+  margin-top: 20px;
   text-align: center;
   font-size: 26px;
-  margin-top: 160px;
+}
+
+.key-letter {
+  text-align: center;
+  margin: 210px 0 0px 0;
+
+  /*line-height: 200px;*/
 }
 
 .user-interface {
